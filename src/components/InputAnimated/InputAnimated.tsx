@@ -64,6 +64,7 @@ const InputAnimated: React.FC < InputAnimatedProps > = ({ id, label, onChange })
 	      onChange={(e) => handleChange(e)}
 	      onFocus={() => setFocus(true)}
 	      onBlur={() => setFocus(false)}
+	      autoComplete="off"
 	      type="text" 
 	      value={value}
 	      fontSize={3}

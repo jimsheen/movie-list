@@ -17,9 +17,10 @@ import InputAnimated from '../InputAnimated';
 
 type SearchBarProps = {
 	handleSubmit: (data: any) => void,
+	isSearching: boolean,
 }
 
-const SearchBar: React.FC <SearchBarProps> = ({ handleSubmit }) => {
+const SearchBar: React.FC <SearchBarProps> = ({ handleSubmit, isSearching }) => {
 
 	const [state, setState] = useState({});
 
@@ -44,18 +45,27 @@ const SearchBar: React.FC <SearchBarProps> = ({ handleSubmit }) => {
 				width: '100%'
 			}}
 		>
-			<Text fontSize={5} mb={4}>Search for a movie</Text>
+			<Text 
+				fontSize={isSearching ? 3 : 5} 
+				mb={4}
+				sx={{
+					transition: 'font-size 800ms',
+				}}
+			>
+				Search for a movie
+			</Text>
 			<Flex 
 				mx={-2} 
 				as="form"
 				onSubmit={(e) => onSubmit(e)}
+				flexWrap="wrap"
 			>
-				<Box px={2} flex={1}>
+				<Box px={2} flex={['auto', 1]} width={1}>
 					<InputAnimated id="t" label="Title" onChange={handleChange} />
 				</Box>
 				<Flex 
 					px={2} 
-					width={1/4}
+					width={[1, 1/6]}
 					variant="primary"
 				>
 					<Button flex={1}>Search</Button>

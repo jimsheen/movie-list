@@ -10,11 +10,12 @@ function App() {
 
 	const [isSearching, setIsSearching] = useState(false);
 	const [isMovieListActive, setMovieListActive] = useState(false);
-	const [searchData, setSearchData] = useState({});
+	const [searchData, setSearchData] = useState(null);
 
-	const transitionTimeout = 2000;
+	const transitionTimeout = 800;
 	const align = isSearching ? 'start' : 'center';
-	const height = isSearching ? 'calc(0% + 250px)' : 'calc(100% + 0px)';
+	const height = isSearching ? 'calc(0% + 0px)' : 'calc(100% + 0px)';
+	const my = isSearching ? 3 : 0;
 
 	const handleSubmit = (data: any) => {
 		console.log(data);
@@ -40,20 +41,20 @@ function App() {
 						alignItems="center" 
 						justifyContent="center"
 						sx={{
-							height,
-							transition: `height ${transitionTimeout}ms`,
+							minHeight: height,
+							transition: `min-height ${transitionTimeout}ms`,
 							flexWrap: 'wrap',
+							my,
 						}}
 					>
 						<Box
 							width={1}
 						>
-							<SearchBar handleSubmit={handleSubmit} />
+							<SearchBar handleSubmit={handleSubmit} isSearching={isSearching} />
 						</Box>
 					</Flex>
 					{isMovieListActive &&
 						<Box width={1}>
-							find movies based on search term ere'
 							<MovieList searchData={searchData} />
 						</Box>
 					}

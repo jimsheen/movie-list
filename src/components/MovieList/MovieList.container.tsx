@@ -1,23 +1,29 @@
 import React from 'react';
+import { testMovieResults } from '../../utils/testData';
+import { SearchDataType, AtLeastOne } from '../../types';
 
-type AtLeastOne<T> = { [K in keyof T]: Pick<T, K> }[keyof T];
+import useGetMovies from '../../hooks/useGetMovies';
 
-type SearchDataType = {
-	t: string,
-	type: string,
-	y: string,
-	plot: string
-};
+import MovieList from './MovieList';
 
 type MovieListContainerProps = {
-	searchData: AtLeastOne<SearchDataType>
+	searchData: AtLeastOne<SearchDataType | null>
 }
 
 const MovieListContainer: React.FC<MovieListContainerProps> = ({ searchData }) => {
 
 	console.log(searchData);
 
-	return null
+	const { movies, totalResults, isLoading } = useGetMovies(searchData);
+
+	console.log(movies, totalResults, isLoading);
+
+	return (
+		
+		<React.Fragment>
+			<MovieList movies={movies} isLoading={isLoading} />
+		</React.Fragment>
+	)
 }
 
 export default MovieListContainer;

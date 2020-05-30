@@ -10,6 +10,7 @@ export default {
 
 const defaultProps = {
 	handleSubmit: action('handleSubmit'),
+	isSearching: false,
 }
 
 export const Default = () => <SearchBar { ...defaultProps } />

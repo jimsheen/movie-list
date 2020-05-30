@@ -15,3 +15,6 @@ const defaultProps = {
 }
 
 export const Default = () => <MovieList { ...defaultProps } />
+
+
+export const IsLoading = () => <MovieList { ...defaultProps } isLoading={true} />
