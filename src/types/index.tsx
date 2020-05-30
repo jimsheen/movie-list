@@ -4,7 +4,7 @@ export type SearchDataType = {
 	t: string,
 	type: string,
 	y: string,
-	plot: string
+	plot: string,
 };
 
 export type MovieSearchResultsType = {

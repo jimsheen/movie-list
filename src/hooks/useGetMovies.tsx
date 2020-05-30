@@ -11,13 +11,15 @@ const useGetMovies = (searchData: SearchDataType | null) => {
 
   // Build query from search data
 
+  console.log(searchData);
+
   const initialState = {
     totalResults: '',
     isLoading: false,
     error: false,
   }
 
-  const [movies, setMovies] = useState<MovieSearchResultsType[] | []>([]);
+  const [movies, setMovies] = useState < MovieSearchResultsType[] | [] > ([]);
 
   type MockAPICallTypes = {
     data: {
@@ -27,7 +29,7 @@ const useGetMovies = (searchData: SearchDataType | null) => {
     status: number
   }
 
-  const mockAPICall = (page: number) => new Promise <MockAPICallTypes> ((resolve, reject) => {
+  const mockAPICall = (page: number) => new Promise < MockAPICallTypes > ((resolve, reject) => {
     setTimeout(() => {
       resolve({
         data: testMovieResults,
@@ -42,36 +44,35 @@ const useGetMovies = (searchData: SearchDataType | null) => {
 
   useBottomScrollListener(() => {
     // update page number on scroll to bottom
-    console.log('scroll');
     if (!state.isLoading) return setOffset(page + 1)
-  }, window.innerHeight, 0);
+  });
+
+  const fetchMovies = async (mergeArr: boolean) => {
+    setState(state => ({ ...state, isLoading: true }));
+    try {
+      const {
+        data: {
+          totalResults,
+          Search,
+        },
+      } = await mockAPICall(page);
+
+      const newMovies = mergeArr ? [...movies, ...Search] : Search;
+      setMovies(newMovies);
+      setState(state => ({ ...state, totalResults, error: false, isLoading: false }))
+    } catch (error) {
+      setState(state => ({ ...state, error, isLoading: false }))
+    }
+  }
 
   useEffect(() => {
-    console.log('use effect');
-    const fetchMovies = async () => {
-      setState(state => ({ ...state, isLoading: true }));
-      try {
-        const {
-          data: {
-            totalResults,
-            Search,
-          },
-        } = await mockAPICall(page);
-
-        console.log(totalResults, Search, movies);
-        // setState(state => ({ 
-        //   ...state,
-        //   movies: Search,
-        // }))
-        const newMovies = [ ...movies, ...Search];
-        setMovies([ ...movies, ...Search]);
-        setState(state => ({ ...state, totalResults, error: false, isLoading: false }))
-      } catch (error) {
-        setState(state => ({ ...state, error, isLoading: false }))
-      }
-    }
-    fetchMovies();
+    fetchMovies(true);
   }, [page]);
+
+  useEffect(() => {
+    setMovies([]);
+    fetchMovies(false);
+  }, [searchData])
 
   return { ...state, movies };
 }

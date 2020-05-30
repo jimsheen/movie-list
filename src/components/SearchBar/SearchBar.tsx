@@ -12,11 +12,13 @@ import {
 	Input
 } from '@rebass/forms';
 
+import { SearchDataType } from '../../types';
+
 
 import InputAnimated from '../InputAnimated';
 
 type SearchBarProps = {
-	handleSubmit: (data: any) => void,
+	handleSubmit: (data: SearchDataType | {}) => void,
 	isSearching: boolean,
 }
 
@@ -34,7 +36,7 @@ const SearchBar: React.FC <SearchBarProps> = ({ handleSubmit, isSearching }) => 
 	const onSubmit = (e: React.FormEvent<HTMLDivElement>) => {
 		e.preventDefault();
 		console.log(state);
-		handleSubmit(state);
+		if (Object.keys(state).length > 0) handleSubmit(state);
 		// TODO: SEND TO QUERY BUILDER
 	}
 

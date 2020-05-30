@@ -4,8 +4,6 @@ import { default as defaultTheme } from '@rebass/preset'
 
 import '../styles/index.css';
 
-console.log(defaultTheme);
-
 export const theme = {
 	...defaultTheme,
 	breakpoints: ['40em', '64em', '75em'],

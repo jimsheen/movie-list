@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Animated } from 'react-animated-css';
 
@@ -6,34 +6,25 @@ import {
 	Flex,
 	Box,
 	Image,
-	Text
+	Text,
+	Button
 } from 'rebass';
 
 import { MovieSearchResultsType } from '../../types';
 
 import LoadingSpinner from '../LoadingSpinner';
 
+import MovieListThumb from '../MovieListThumb';
+
 type MovieListProps = {
 	movies: MovieSearchResultsType[] | null,
 	isLoading: boolean,
+	handleClick: (id: string) => void,
 }
 
+const createDelay = (index: number, total: number) => Math.abs(((total - index) - 10)) * 50;
 
-const MovieList: React.FC <MovieListProps> = ({ movies, isLoading }) => {
-	console.log(movies);
-
-	const [delayIndex, setDelayIndex] = useState(0);
-
-	useEffect(() => {
-		setDelayIndex(0);
-	}, [isLoading])
-
-	const createDelay = (index: number) => {
-		if (movies) {
-			return Math.abs(((movies.length - index) - 10)) * 100;
-		}
-		return 0;
-	} 
+const MovieList: React.FC < MovieListProps > = ({ movies, isLoading, handleClick }) => {
 
 	return (
 		<Flex mx={-2} flexWrap="wrap">
@@ -55,33 +46,28 @@ const MovieList: React.FC <MovieListProps> = ({ movies, isLoading }) => {
 		    			animationIn="fadeInUp"
 		    			animationOut="fadeOut"
 		    			isVisible={true}
-		    			animationInDelay={createDelay(index)}
+		    			animationInDelay={createDelay(index, movies.length)}
 		    		>
-							<Flex 
-								flexWrap="wrap"
-								flexDirection={['column-reverse', 'column']}
-								height="100%"
-							>
-									<Image 
-										src={movie.Poster} 
-										alt={`${movie.Poster} Poster Image`}
-										width={1}
-										sx={{
-											flex: '1 0 auto',
-										}}
-									/>
-									<Box mb={[3, 0]}>
-										<Text fontWeight="bold" fontSize={[4, 2]} mt={2}>{movie.Title}</Text>
-										<Text fontSize={[3, 1]}>{movie.Year}</Text>
-									</Box>
-								</Flex>
-							</Animated>
-						</Flex>
-					</React.Fragment>
-				))}
-				<Box my={4} width={1}>
-			 		{isLoading && <LoadingSpinner />}
-			 </Box>
+							<MovieListThumb 
+								src={movie.Poster}
+								title={movie.Title}
+								year={movie.Year}
+								id={movie.imdbID}
+								handleClick={() => handleClick(movie.imdbID)}
+							/>
+						</Animated>
+					</Flex>
+				</React.Fragment>
+			))}
+			<Flex 
+				justifyContent="center" 
+				alignItems="center" 
+				height="150px" 
+				py={4} 
+				width={1}
+			>
+		 		{isLoading && <LoadingSpinner />}
+		 	</Flex>
 		</Flex>
 	);
 }
