@@ -1,5 +1,4 @@
-import React, { useReducer, useState } from 'react';
-
+import React, { useState } from 'react';
 import {
 	Flex,
 	Box,
@@ -7,13 +6,7 @@ import {
 	Button
 } from 'rebass';
 
-import {
-	Label,
-	Input
-} from '@rebass/forms';
-
 import { SearchDataType } from '../../types';
-
 
 import InputAnimated from '../InputAnimated';
 

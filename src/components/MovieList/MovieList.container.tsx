@@ -1,6 +1,5 @@
 import React from 'react';
-import { testMovieResults } from '../../utils/testData';
-import { SearchDataType, AtLeastOne } from '../../types/';
+import { SearchDataType } from '../../types/';
 
 import {
 	useHistory
@@ -16,21 +15,15 @@ type MovieListContainerProps = {
 
 const MovieListContainer: React.FC < MovieListContainerProps > = ({ searchData }) => {
 
-	console.log(searchData);
-
+	const { movies, isLoading } = useGetMovies(searchData);
 	const history = useHistory();
-
+	
 	const handleClick = (id: string) => {
 		console.log('handleClick', id);
 		history.push(`/${id}`);
 	}
 
-	const { movies, totalResults, isLoading } = useGetMovies(searchData);
-
-	console.log(movies, totalResults, isLoading);
-
 	return (
-
 		<React.Fragment>
 			<MovieList movies={movies} isLoading={isLoading} handleClick={handleClick}/>
 		</React.Fragment>

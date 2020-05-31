@@ -2,12 +2,10 @@ import React from 'react';
 
 import {
 	Flex,
-	Button,
 	Text,
 	Box,
 	Image
 } from 'rebass';
-
 
 import { Link } from 'react-router-dom';
 
@@ -18,7 +16,6 @@ type MovieListThumbProps = {
 	id: string,
 	handleClick: () => void,
 };
-
 
 const MovieListThumb: React.FC < MovieListThumbProps > = ({
 	src,
@@ -33,7 +30,7 @@ const MovieListThumb: React.FC < MovieListThumbProps > = ({
 			flexDirection={['column-reverse', 'column']}
 			height="100%"
 		>
-			<Button
+			<Box
 				width={1}
 				sx={{
 					flex: '1 0 auto',
@@ -58,7 +55,7 @@ const MovieListThumb: React.FC < MovieListThumbProps > = ({
 					}}
 				/>
 				</Link>
-			</Button>
+			</Box>
 			<Box mb={[3, 0]}>
 				<Text fontWeight="bold" fontSize={[4, 2]} mt={2}>{title}</Text>
 				<Text fontSize={[3, 1]}>{year}</Text>
@@ -66,6 +63,5 @@ const MovieListThumb: React.FC < MovieListThumbProps > = ({
 		</Flex>
 	)
 }
-
 
 export default MovieListThumb;

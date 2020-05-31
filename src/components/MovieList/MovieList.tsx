@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Animated } from 'react-animated-css';
 
 import {
 	Flex,
-	Box,
-	Image,
-	Text,
-	Button
 } from 'rebass';
 
 import { MovieSearchResultsType } from '../../types';
@@ -28,7 +24,7 @@ const MovieList: React.FC < MovieListProps > = ({ movies, isLoading, handleClick
 
 	return (
 		<Flex mx={-2} flexWrap="wrap">
-			{movies && movies.map((movie: MovieSearchResultsType, index: number) => (
+			{movies && movies.length > 0 && movies.map((movie: MovieSearchResultsType, index: number) => (
 				<React.Fragment>
 					<Flex 
 						px={2}

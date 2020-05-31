@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { Flex, Box } from 'rebass';
 
+import { Animated } from 'react-animated-css';
+
 import SearchBar from '../../components/SearchBar';
 import MovieList from '../../components/MovieList';
 
@@ -14,7 +16,6 @@ const MovieSearch: React.FC = () => {
 	const [searchData, setSearchData] = useState(null);
 
 	const transitionTimeout = isMovieListActive ? 0 : 800;
-	const align = isSearching ? 'start' : 'center';
 	const height = isSearching ? 'calc(0% + 0px)' : 'calc(100% + 0px)';
 	const my = isSearching ? 3 : 0;
 
@@ -42,7 +43,13 @@ const MovieSearch: React.FC = () => {
 				<Box
 					width={1}
 				>
-					<SearchBar handleSubmit={handleSubmit} isSearching={isSearching} />
+					<Animated
+		  			animationIn="fadeIn"
+		  			animationOut="fadeOut"
+		  			isVisible={true}
+		  		>
+						<SearchBar handleSubmit={handleSubmit} isSearching={isSearching} />
+					</Animated>
 				</Box>
 			</Flex>
 			{isMovieListActive &&

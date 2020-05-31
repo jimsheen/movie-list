@@ -1,21 +1,10 @@
-import React, { useState } from 'react';
-import { Box } from 'rebass';
+import React from 'react';
 
 import {
 	BrowserRouter,
-	Route,
-	Switch,
-	Link,
-	withRouter,
-	useLocation
 } from 'react-router-dom';
 
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
-
 import { ThemeProvider, theme } from './theme';
-
-import MovieSearch from './pages/MovieSearch';
 
 import Routes from './Routes';
 

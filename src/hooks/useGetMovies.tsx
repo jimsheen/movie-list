@@ -1,18 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-// import { getTopStories } from './util/api';
+import { useEffect, useState } from 'react';
+
+import callApi from '../utils/callApi';
+
 import { useBottomScrollListener } from 'react-bottom-scroll-listener';
-
 import { testMovieResults } from '../utils/testData';
-
 import { SearchDataType, MovieSearchResultsType } from '../types';
 
+type MockAPICallTypes = {
+  data: {
+    Search: MovieSearchResultsType[],
+    totalResults: string,
+  },
+  status: number
+}
+
+const mockAPICall = (page: number) => new Promise < MockAPICallTypes > ((resolve, reject) => {
+  setTimeout(() => {
+    resolve({
+      data: testMovieResults,
+      status: 200
+    })
+  }, 200)
+});
+
 const useGetMovies = (searchData: SearchDataType | null) => {
-
-  // Build query from search data
-
-  console.log(searchData);
-
   const initialState = {
     totalResults: '',
     isLoading: false,
@@ -20,34 +31,15 @@ const useGetMovies = (searchData: SearchDataType | null) => {
   }
 
   const [movies, setMovies] = useState < MovieSearchResultsType[] | [] > ([]);
-
-  type MockAPICallTypes = {
-    data: {
-      Search: MovieSearchResultsType[],
-      totalResults: string,
-    },
-    status: number
-  }
-
-  const mockAPICall = (page: number) => new Promise < MockAPICallTypes > ((resolve, reject) => {
-    setTimeout(() => {
-      resolve({
-        data: testMovieResults,
-        status: 200
-      })
-    }, 200)
-  });
-
   const [state, setState] = useState(initialState);
-
   const [page, setOffset] = useState(0);
 
-  useBottomScrollListener(() => {
-    // update page number on scroll to bottom
-    if (!state.isLoading) return setOffset(page + 1)
-  });
+  useBottomScrollListener(() => !state.isLoading ? setOffset(page + 1) : null);
 
   const fetchMovies = async (mergeArr: boolean) => {
+
+    // const response = await api({ endpoint: query });
+
     setState(state => ({ ...state, isLoading: true }));
     try {
       const {

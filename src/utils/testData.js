@@ -63,3 +63,31 @@ export const testMovieResults = {
 	"totalResults": "2999",
 	"Response": "True"
 };
+
+export const singleMovieResult = {
+	"Title": "Dancer in the Dark",
+	"Year": "2000",
+	"Rated": "R",
+	"Released": "06 Oct 2000",
+	"Runtime": "140 min",
+	"Genre": "Crime, Drama, Musical",
+	"Director": "Lars von Trier",
+	"Writer": "Lars von Trier",
+	"Actors": "Björk, Catherine Deneuve, David Morse, Peter Stormare",
+	"Plot": "An East European girl travels to the United States with her young son, expecting it to be like a Hollywood film.",
+	"Language": "English, German, Czech",
+	"Country": "Denmark, Germany, Netherlands, Italy, USA, UK, France, Sweden, Finland, Iceland, Argentina, Norway, Taiwan, Belgium",
+	"Awards": "Nominated for 1 Oscar. Another 35 wins & 47 nominations.",
+	"Poster": "https://m.media-amazon.com/images/M/MV5BNDVkYWMxNWEtNjc2MC00OGI5LWI3NmUtYWUwNDQyOTc3YmY5XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+	"Ratings": [{ "Source": "Internet Movie Database", "Value": "8.0/10" }, { "Source": "Rotten Tomatoes", "Value": "69%" }, { "Source": "Metacritic", "Value": "61/100" }],
+	"Metascore": "61",
+	"imdbRating": "8.0",
+	"imdbVotes": "98,860",
+	"imdbID": "tt0168629",
+	"Type": "movie",
+	"DVD": "N/A",
+	"BoxOffice": "N/A",
+	"Production": "N/A",
+	"Website": "N/A",
+	"Response": "True"
+}

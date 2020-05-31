@@ -7,10 +7,38 @@ export type SearchDataType = {
 	plot: string,
 };
 
-export type MovieSearchResultsType = {
+export interface MovieSearchResultsType {
 	Year: string,
 	Title: string,
 	imdbID: string,
 	Type: string,
 	Poster: string,
+}
+
+export type RatingsType = {
+	Source: string,
+	Value: string,
+}
+
+export interface SingleMovieResultType extends MovieSearchResultsType {
+	Released: string,
+	Runtime: string,
+	Genre: string,
+	Director: string,
+	Writer: string,
+	Actors: string,
+	Plot: string,
+	Language: string,
+	Country: string,
+	Awards: string,
+	Poster: string,
+	Ratings: RatingsType[],
+	Metascore: string,
+	imdbRating: string,
+	Type: string,
+	DVD: string,
+	BoxOffice: string,
+	Production: string,
+	Website: string,
+	Response: string,
 }
