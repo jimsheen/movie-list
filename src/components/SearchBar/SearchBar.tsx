@@ -28,9 +28,7 @@ const SearchBar: React.FC <SearchBarProps> = ({ handleSubmit, isSearching }) => 
 
 	const onSubmit = (e: React.FormEvent<HTMLDivElement>) => {
 		e.preventDefault();
-		console.log(state);
 		if (Object.keys(state).length > 0) handleSubmit(state);
-		// TODO: SEND TO QUERY BUILDER
 	}
 
 	return (
@@ -56,7 +54,7 @@ const SearchBar: React.FC <SearchBarProps> = ({ handleSubmit, isSearching }) => 
 				flexWrap="wrap"
 			>
 				<Box px={2} flex={['auto', 1]} width={1}>
-					<InputAnimated id="t" label="Title" onChange={handleChange} />
+					<InputAnimated id="s" label="Title" onChange={handleChange} />
 				</Box>
 				<Flex 
 					px={2} 

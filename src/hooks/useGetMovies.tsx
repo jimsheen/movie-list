@@ -1,27 +1,13 @@
 import { useEffect, useState } from 'react';
 
-import callApi from '../utils/callApi';
+import callApi from '../utils/callApi/';
+
+import { testMovieResults } from '../utils/testData';
 
 import { useBottomScrollListener } from 'react-bottom-scroll-listener';
-import { testMovieResults } from '../utils/testData';
 import { SearchDataType, MovieSearchResultsType } from '../types';
 
-type MockAPICallTypes = {
-  data: {
-    Search: MovieSearchResultsType[],
-    totalResults: string,
-  },
-  status: number
-}
-
-const mockAPICall = (page: number) => new Promise < MockAPICallTypes > ((resolve, reject) => {
-  setTimeout(() => {
-    resolve({
-      data: testMovieResults,
-      status: 200
-    })
-  }, 200)
-});
+const API_KEY = process.env.REACT_APP_OMDB_KEY;
 
 const useGetMovies = (searchData: SearchDataType | null) => {
   const initialState = {
@@ -32,13 +18,11 @@ const useGetMovies = (searchData: SearchDataType | null) => {
 
   const [movies, setMovies] = useState < MovieSearchResultsType[] | [] > ([]);
   const [state, setState] = useState(initialState);
-  const [page, setOffset] = useState(0);
+  const [page, setOffset] = useState(1);
 
   useBottomScrollListener(() => !state.isLoading ? setOffset(page + 1) : null);
 
   const fetchMovies = async (mergeArr: boolean) => {
-
-    // const response = await api({ endpoint: query });
 
     setState(state => ({ ...state, isLoading: true }));
     try {
@@ -47,7 +31,15 @@ const useGetMovies = (searchData: SearchDataType | null) => {
           totalResults,
           Search,
         },
-      } = await mockAPICall(page);
+      } = await callApi({
+        endpoint: 'http://www.omdbapi.com',
+        params: {
+          page,
+          apikey: API_KEY,
+          ...searchData,
+        },
+        mockData: testMovieResults,
+      })
 
       const newMovies = mergeArr ? [...movies, ...Search] : Search;
       setMovies(newMovies);

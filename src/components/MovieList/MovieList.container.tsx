@@ -19,7 +19,6 @@ const MovieListContainer: React.FC < MovieListContainerProps > = ({ searchData }
 	const history = useHistory();
 	
 	const handleClick = (id: string) => {
-		console.log('handleClick', id);
 		history.push(`/${id}`);
 	}
 

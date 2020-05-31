@@ -25,8 +25,8 @@ const MovieList: React.FC < MovieListProps > = ({ movies, isLoading, handleClick
 	return (
 		<Flex mx={-2} flexWrap="wrap">
 			{movies && movies.length > 0 && movies.map((movie: MovieSearchResultsType, index: number) => (
-				<React.Fragment>
-					<Flex 
+				<React.Fragment key={`${movie.Title}-${index}`}>
+					<Flex
 						px={2}
 						mb={[4, 3]} 
 						width={[1, 1/3, 1/5]}

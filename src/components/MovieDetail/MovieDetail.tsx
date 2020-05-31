@@ -27,12 +27,12 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ movie, isLoading }) => {
 		  			animationOut="fadeOut"
 		  			isVisible={true}
 		  		>
-					<Text fontSize={6} mb={4}>
+					<Text fontSize={6} my={4} >
 						{movie.Title}
 					</Text>
 					<Flex
 						mx={-4}
-						flexDirection={['column', 'row']}
+						flexDirection={['column-reverse', 'row']}
 					>
 						<Box 
 							px={4}
@@ -44,8 +44,11 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ movie, isLoading }) => {
 								width={1}
 							/>
 						</Box>
-						<Box width={[1, 1/2]}>
-							<Text fontSize={4}>
+						<Box 
+							width={[1, 1/2]}
+							px={4}
+						>
+							<Text fontSize={4} mb={[3, 0]}>
 								{movie.Plot}
 							</Text>
 						</Box>

@@ -38,7 +38,10 @@ const MovieListThumb: React.FC < MovieListThumbProps > = ({
 					cursor: 'pointer',
 					background: 'none',
 					padding: 0,
-					outline: 'none'
+					outline: 'none',
+					'> a': {
+						width: '100%'
+					}
 				}}
 			>
 			<Link to={`/movie/${id}`}>

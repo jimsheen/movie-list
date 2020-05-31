@@ -5,21 +5,26 @@ import {
 
 import MovieDetail from '../../components/MovieDetail';
 
+import { singleMovieResult } from '../../utils/testData';
+
 import {
 	Flex,
 	Box,
 } from 'rebass';
 
-import useGetMovie from '../../hooks/useGetMovie';
+import useClient from '../../hooks/useClient';
 
 import { LayoutContainer } from '../../layout';
 
 const MovieDetailPage = () => {
 
 	const { id } = useParams();
-	const { movie, isLoading } = useGetMovie(id);
-
-	console.log(movie, isLoading);
+	const { response, isLoading } = useClient({
+		params: {
+			i: id,
+		},
+		mockData: singleMovieResult,
+	});
 
 	return (
 		<LayoutContainer>
@@ -31,7 +36,7 @@ const MovieDetailPage = () => {
 				<Box
 					width={1}
 				>
-					<MovieDetail movie={movie} isLoading={isLoading} />
+					<MovieDetail movie={response} isLoading={isLoading} />
 				</Box>
 			</Flex>
 		</LayoutContainer>
