@@ -10,22 +10,20 @@ import { MovieSearchResultsType } from '../../types';
 
 import LoadingSpinner from '../LoadingSpinner';
 
-import MovieListThumb from '../MovieListThumb';
-
 type MovieListProps = {
-	movies: MovieSearchResultsType[] | null,
+	movies: MovieSearchResultsType[] | string[] | null,
 	isLoading: boolean,
-	handleClick: (id: string) => void,
+	render: (movie: any) => React.ReactNode,
 }
 
 const createDelay = (index: number, total: number) => Math.abs(((total - index) - 10)) * 50;
 
-const MovieList: React.FC < MovieListProps > = ({ movies, isLoading, handleClick }) => {
+const MovieList: React.FC < MovieListProps > = ({ movies, isLoading, render }) => {
 
 	return (
 		<Flex mx={-2} flexWrap="wrap">
-			{movies && movies.length > 0 && movies.map((movie: MovieSearchResultsType, index: number) => (
-				<React.Fragment key={`${movie.Title}-${index}`}>
+			{movies && movies.length > 0 && (movies as Array<MovieSearchResultsType | string>).map((movie, index: number) => (
+				<React.Fragment key={index}>
 					<Flex
 						px={2}
 						mb={[4, 3]} 
@@ -44,13 +42,7 @@ const MovieList: React.FC < MovieListProps > = ({ movies, isLoading, handleClick
 		    			isVisible={true}
 		    			animationInDelay={createDelay(index, movies.length)}
 		    		>
-							<MovieListThumb 
-								src={movie.Poster}
-								title={movie.Title}
-								year={movie.Year}
-								id={movie.imdbID}
-								handleClick={() => handleClick(movie.imdbID)}
-							/>
+		    			{render(movie)}
 						</Animated>
 					</Flex>
 				</React.Fragment>

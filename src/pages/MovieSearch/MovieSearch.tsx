@@ -31,7 +31,7 @@ const MovieSearch: React.FC = () => {
 	}
 
 	return (
-		<LayoutContainer>
+		<React.Fragment>
 			<Flex 
 				alignItems="center" 
 				justifyContent="center"
@@ -64,7 +64,7 @@ const MovieSearch: React.FC = () => {
 					<MovieList searchData={searchData} />
 				</Box>
 			}
-		</LayoutContainer>
+		</React.Fragment>
 	)
 }
 

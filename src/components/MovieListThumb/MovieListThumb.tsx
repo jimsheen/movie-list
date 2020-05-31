@@ -14,7 +14,6 @@ type MovieListThumbProps = {
 	title: string,
 	year: string,
 	id: string,
-	handleClick: () => void,
 };
 
 const MovieListThumb: React.FC < MovieListThumbProps > = ({
@@ -22,7 +21,6 @@ const MovieListThumb: React.FC < MovieListThumbProps > = ({
 	title,
 	year,
 	id,
-	handleClick
 }) => {
 	return (
 		<Flex 

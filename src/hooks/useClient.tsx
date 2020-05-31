@@ -12,8 +12,10 @@ const useClient = ({
 	mockData? : {},
 }) => {
 
-	const [response, setResponse] = useState(null);
+	const [response, setResponse] = useState({} as any);
 	const [isLoading, setLoading] = useState(false);
+
+	console.log(params);
 
 	const fetchData = async () => {
 		setLoading(true);

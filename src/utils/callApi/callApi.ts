@@ -28,6 +28,8 @@ const callApi = async ({
 }) => {
 
   const queryString = params ? queryBuilder(params) : '';
+
+  console.log(queryString);
   
   // if test env or mockdata exists use mockAPICAll
   if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development') return mockAPICall(mockData);

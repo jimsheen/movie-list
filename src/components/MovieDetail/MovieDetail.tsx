@@ -22,14 +22,6 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ movie, isLoading }) => {
 			{isLoading && <LoadingSpinner />}
 			{!isLoading && !isEmpty(movie) &&
 				<React.Fragment>
-				<Animated
-		  			animationIn="fadeIn"
-		  			animationOut="fadeOut"
-		  			isVisible={true}
-		  		>
-					<Text fontSize={6} my={4} >
-						{movie.Title}
-					</Text>
 					<Flex
 						mx={-4}
 						flexDirection={['column-reverse', 'row']}
@@ -53,7 +45,6 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ movie, isLoading }) => {
 							</Text>
 						</Box>
 					</Flex>
-					</Animated>
 				</React.Fragment>
 			}
 		</React.Fragment>

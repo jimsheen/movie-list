@@ -1,7 +1,10 @@
 import React from 'react';
 import {
-	useParams
+	useParams,
+	Link
 } from 'react-router-dom';
+
+import { Animated } from 'react-animated-css';
 
 import MovieDetail from '../../components/MovieDetail';
 
@@ -10,11 +13,10 @@ import { singleMovieResult } from '../../utils/testData';
 import {
 	Flex,
 	Box,
+	Text
 } from 'rebass';
 
 import useClient from '../../hooks/useClient';
-
-import { LayoutContainer } from '../../layout';
 
 const MovieDetailPage = () => {
 
@@ -27,19 +29,27 @@ const MovieDetailPage = () => {
 	});
 
 	return (
-		<LayoutContainer>
-			<Flex 
-				alignItems="center"
-				justifyContent="center"
-				height="100%"
+		<Flex 
+			justifyContent="center"
+			height="100%"
+		>
+			<Box
+				width={1}
 			>
-				<Box
-					width={1}
+				<Animated
+					animationIn="fadeIn"
+					animationOut="fadeOut"
+					isVisible={true}
+					animationInDelay={500}
 				>
+					<Link to="/">
+		  			<Text fontSize={2} my={4}>Back to search</Text>
+		  		</Link>
+		  		<Text fontSize={[4, 6]} mb={4}>{response.Title}</Text>
 					<MovieDetail movie={response} isLoading={isLoading} />
-				</Box>
-			</Flex>
-		</LayoutContainer>
+				</Animated>
+			</Box>
+		</Flex>
 	);
 }
 

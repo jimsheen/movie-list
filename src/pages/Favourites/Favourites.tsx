@@ -1,66 +1,63 @@
 import React from 'react';
 import {
-	useParams
+	Link
 } from 'react-router-dom';
 
-import MovieList from '../../components/MovieList/MovieList';
+import { Animated } from 'react-animated-css';
 
-import { singleMovieResult } from '../../utils/testData';
+import MovieList from '../../components/MovieList/MovieList';
+import FaveMovieThumb from '../../components/FaveMovieThumb';
 
 import {
 	Flex,
 	Box,
+	Text
 } from 'rebass';
-
-import useClient from '../../hooks/useClient';
-
-import { LayoutContainer } from '../../layout';
 
 const Favourites = () => {
 
-	const { id } = useParams();
-	const { response, isLoading } = useClient({
-		params: {
-			i: id,
-		},
-		mockData: singleMovieResult,
-	});
+	// array of fave ids pass to movie list 
+
+	const faveMovieIds = [
+		'tt1375666',
+		'tt0137523',
+		'tt0246578',
+		'tt0456554',
+		'tt0209144',
+		'tt0133093',
+		'tt0115798',
+		'tt0120735',
+		'tt0144084',
+		'tt0093894',
+	];
 
 	return (
-		<LayoutContainer>
-			<Flex 
-				alignItems="center"
-				justifyContent="center"
-				height="100%"
+		<Flex 
+			justifyContent="center"
+			height="100%"
+		>
+			<Box
+				width={1}
 			>
-				<Box
-					width={1}
+				<Animated
+					animationIn="fadeIn"
+					animationOut="fadeOut"
+					isVisible={true}
+					animationInDelay={500}
 				>
-					<p>tewanete</p> 
-				</Box>
-			</Flex>
-		</LayoutContainer>
+					<Link to="/">
+		  			<Text fontSize={2} my={4}>Back to search</Text>
+		  		</Link>
+		  		<Text fontSize={[4, 6]} mb={4}>My Favourites</Text>
+					<MovieList 
+						movies={faveMovieIds}
+						isLoading={false}
+						render={(movie) => <FaveMovieThumb id={movie} />}
+					/>
+				</Animated>
+			</Box>
+		</Flex>
 	);
 }
-
-// const FaveMovie = () => {
-// 	const { response, isLoading } = useClient({
-// 		params: {
-// 			i: 'c8fe301c',
-// 		},
-// 		mockData: singleMovieResult,
-// 	});
-
-// 	useEffect(() => {
-		
-// 	}, [])
-
-// 	return null
-// }
-
-// const FaveMovieMap = () => {
-	
-// }
-
 
 export default Favourites;
