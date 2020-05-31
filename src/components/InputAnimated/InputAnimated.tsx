@@ -40,6 +40,7 @@ const InputAnimated: React.FC < InputAnimatedProps > = ({ id, label, onChange })
 
 	return (
 		<Box
+			mt={3}
 			sx={{
 				width: '100%',
 				position: 'relative',

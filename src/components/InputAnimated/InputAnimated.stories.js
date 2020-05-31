@@ -10,7 +10,7 @@ export default {
 
 const defaultProps = {
 	id: 'testID',
-	name: 'testName',
+	label: 'testName',
 	onChange: action('onChange'),
 }
 

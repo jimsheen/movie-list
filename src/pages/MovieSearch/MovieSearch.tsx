@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import { Flex, Box } from 'rebass';
 
 import { Animated } from 'react-animated-css';
@@ -49,6 +51,11 @@ const MovieSearch: React.FC = () => {
 		  			isVisible={true}
 		  		>
 						<SearchBar handleSubmit={handleSubmit} isSearching={isSearching} />
+						<Box>
+							<Link to="/favourites">
+								<p>{`My favourites <3`}</p>
+							</Link>
+						</Box>
 					</Animated>
 				</Box>
 			</Flex>
