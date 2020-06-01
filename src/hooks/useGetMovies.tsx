@@ -32,7 +32,6 @@ const useGetMovies = (searchData: SearchDataType | null) => {
           Search,
         },
       } = await callApi({
-        endpoint: 'http://www.omdbapi.com',
         params: {
           page,
           apikey: API_KEY,

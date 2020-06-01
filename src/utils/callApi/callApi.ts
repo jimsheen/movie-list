@@ -18,11 +18,11 @@ const mockAPICall = (mockData: any) => new Promise < MockAPICallTypes > ((resolv
 
 
 const callApi = async ({
-  endpoint,
+  endpoint = 'https://www.omdbapi.com',
   params,
   mockData,
 }: {
-  endpoint: string;
+  endpoint ?: string;
   params ? : any,
   mockData? : null | {},
 }) => {

@@ -22,7 +22,6 @@ const useClient = ({
 				data,
 				status
 			} = await callApi({
-				endpoint: 'http://www.omdbapi.com',
 				params: {
 					apikey: API_KEY,
 					type: 'movie',
