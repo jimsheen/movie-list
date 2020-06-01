@@ -5,7 +5,6 @@ import {
 	Flex,
 	Image,
 } from 'rebass';
-import { Animated } from 'react-animated-css';
 import { isEmpty } from 'lodash';
 
 import LoadingSpinner from '../LoadingSpinner';
@@ -22,6 +21,7 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ movie, isLoading }) => {
 			{isLoading && <LoadingSpinner />}
 			{!isLoading && !isEmpty(movie) &&
 				<React.Fragment>
+					<Text fontSize={[4, 6]} mb={[3,4]}>{movie.Title}</Text>
 					<Flex
 						mx={-4}
 						flexDirection={['column-reverse', 'row']}
@@ -40,7 +40,7 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ movie, isLoading }) => {
 							width={[1, 1/2]}
 							px={4}
 						>
-							<Text fontSize={4} mb={[3, 0]}>
+							<Text fontSize={[2, 3]} mb={[3, 0]}>
 								{movie.Plot}
 							</Text>
 						</Box>

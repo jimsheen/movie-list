@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
 	Box
@@ -18,8 +18,8 @@ interface InputAnimatedProps {
 
 const InputAnimated: React.FC < InputAnimatedProps > = ({ id, label, onChange }) => {
 
-	const [hasFocus, setFocus] = useState(false);
-	const [value, setValue] = useState('');
+	const [hasFocus, setFocus] = React.useState(false);
+	const [value, setValue] = React.useState('');
 
 	function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
 		const { value, id } = e.target;
@@ -40,7 +40,6 @@ const InputAnimated: React.FC < InputAnimatedProps > = ({ id, label, onChange })
 
 	return (
 		<Box
-			mt={3}
 			sx={{
 				width: '100%',
 				position: 'relative',
@@ -55,6 +54,7 @@ const InputAnimated: React.FC < InputAnimatedProps > = ({ id, label, onChange })
 					top: topPos,
 					width: 'auto',
 					transition: 'all 0.2s',
+					color: '#333'
 				}}
 			>
 				{label}

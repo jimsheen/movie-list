@@ -7,6 +7,7 @@ import { Animated } from 'react-animated-css';
 
 import MovieList from '../../components/MovieList/MovieList';
 import FaveMovieThumb from '../../components/FaveMovieThumb';
+import StyledLink from '../../components/StyledLink';
 
 import {
 	Flex,
@@ -45,9 +46,10 @@ const Favourites = () => {
 					isVisible={true}
 					animationInDelay={500}
 				>
-					<Link to="/">
-		  			<Text fontSize={2} my={4}>Back to search</Text>
-		  		</Link>
+					
+					<StyledLink fontSize={2} my={4}>
+		  			<Link to="/">Back to search</Link>
+		  		</ StyledLink>
 		  		<Text fontSize={[4, 6]} mb={4}>My Favourites</Text>
 					<MovieList 
 						movies={faveMovieIds}

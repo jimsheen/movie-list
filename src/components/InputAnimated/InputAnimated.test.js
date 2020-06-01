@@ -1,12 +1,12 @@
+import React from 'react';
 import {
   render,
   fireEvent,
   getByLabelText
 } from '@testing-library/react';
 
-import React from 'react';
 
-import InputAnimated from './InputAnimated';
+import InputAnimated from './';
 
 const defaultProps = {
   id: 'testID',

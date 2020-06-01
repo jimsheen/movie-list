@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
 	Flex,
 	Box,
-	Text,
 	Button
 } from 'rebass';
 
@@ -33,35 +32,32 @@ const SearchBar: React.FC <SearchBarProps> = ({ handleSubmit, isSearching }) => 
 
 	return (
 		<Box
-			mb={2}
+			mb={4}
 			sx={{
 				width: '100%'
 			}}
-		>
-			<Text 
-				fontSize={isSearching ? 3 : 5} 
-				mb={4}
-				sx={{
-					transition: 'font-size 800ms',
-				}}
-			>
-				Search for a movie
-			</Text>
+		>	
 			<Flex 
 				mx={-2} 
 				as="form"
 				onSubmit={(e) => onSubmit(e)}
 				flexWrap="wrap"
 			>
-				<Box px={2} flex={['auto', 1]} width={1}>
+				<Box 
+					px={2} 
+					flex={['auto', 1]} 
+					width={1}
+					mb={[3, 0]}
+				>
 					<InputAnimated id="s" label="Title" onChange={handleChange} />
 				</Box>
 				<Flex 
 					px={2} 
 					width={[1, 1/6]}
-					variant="primary"
 				>
-					<Button flex={1}>Search</Button>
+					<Button flex={1}>
+							Search
+					</Button>
 				</Flex>
 			</Flex>
 		</Box>

@@ -13,8 +13,8 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			  <BrowserRouter>
-      		<Routes />
-      	</BrowserRouter>
+	    		<Routes />
+	    	</BrowserRouter>
 		</ThemeProvider>
 	);
 }

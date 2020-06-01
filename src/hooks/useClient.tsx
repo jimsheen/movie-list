@@ -15,8 +15,6 @@ const useClient = ({
 	const [response, setResponse] = useState({} as any);
 	const [isLoading, setLoading] = useState(false);
 
-	console.log(params);
-
 	const fetchData = async () => {
 		setLoading(true);
 		try {
@@ -27,6 +25,7 @@ const useClient = ({
 				endpoint: 'http://www.omdbapi.com',
 				params: {
 					apikey: API_KEY,
+					type: 'movie',
 					...params,
 				},
 				mockData,

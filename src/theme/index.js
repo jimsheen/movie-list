@@ -12,6 +12,7 @@ export const theme = {
 		blueHover: '#2475ad',
 		green: '#77dd77',
 		red: '#FF6961',
+		lightgray: '#f3f3f3',
 	},
 	fontWeights: {
 		bold: 500,
@@ -19,8 +20,8 @@ export const theme = {
 	buttons: {
     primary: {
 			borderRadius: 0,
-      color: 'white',
-      bg: 'blue',
+      color: '#333',
+      bg: 'lightgray',
     }
   }
 }

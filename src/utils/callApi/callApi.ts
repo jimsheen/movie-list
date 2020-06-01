@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import queryBuilder from '../queryBuilder';
+import queryBuilder from '../queryBuilder.js';
 
 type MockAPICallTypes = {
   data: any,
@@ -29,10 +29,11 @@ const callApi = async ({
 
   const queryString = params ? queryBuilder(params) : '';
 
-  console.log(queryString);
+  // dev flag for testing mock data
+  const isDev = false;
   
   // if test env or mockdata exists use mockAPICAll
-  if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development') return mockAPICall(mockData);
+  if (process.env.NODE_ENV === 'test' || isDev) return mockAPICall(mockData);
   // else use axios
 
   return axios.get(`${endpoint}${queryString}`);

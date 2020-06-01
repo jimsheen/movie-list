@@ -7,13 +7,13 @@ import {
 import { Animated } from 'react-animated-css';
 
 import MovieDetail from '../../components/MovieDetail';
+import StyledLink from '../../components/StyledLink';
 
 import { singleMovieResult } from '../../utils/testData';
 
 import {
 	Flex,
-	Box,
-	Text
+	Box
 } from 'rebass';
 
 import useClient from '../../hooks/useClient';
@@ -42,10 +42,9 @@ const MovieDetailPage = () => {
 					isVisible={true}
 					animationInDelay={500}
 				>
-					<Link to="/">
-		  			<Text fontSize={2} my={4}>Back to search</Text>
-		  		</Link>
-		  		<Text fontSize={[4, 6]} mb={4}>{response.Title}</Text>
+					<StyledLink fontSize={2} my={4}>
+		  			<Link to="/">Back to search</Link>
+		  		</ StyledLink>
 					<MovieDetail movie={response} isLoading={isLoading} />
 				</Animated>
 			</Box>
