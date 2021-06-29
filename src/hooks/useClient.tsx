@@ -41,7 +41,7 @@ const useClient = ({
 			}
 		}
 		fetchData();
-	}, [mockData, params])
+	}, []) //eslint-disable-line react-hooks/exhaustive-deps
 	return { response, isLoading };
 }
 
