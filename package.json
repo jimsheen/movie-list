@@ -17,7 +17,6 @@
     "@types/rebass__forms": "^4.0.2",
     "axios": "^0.19.2",
     "normalize.css": "^8.0.1",
-    "react": "^16.13.1",
     "react-animated-css": "^1.2.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
@@ -58,6 +57,7 @@
     "@storybook/preset-create-react-app": "^3.0.0",
     "@storybook/react": "^5.3.19",
     "emotion-theming": "^10.0.27",
+    "react": "^17.0.2",
     "react-bottom-scroll-listener": "^4.0.0",
     "rebass": "^4.0.7",
     "require-context.macro": "^1.2.2"

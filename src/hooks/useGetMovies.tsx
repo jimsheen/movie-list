@@ -16,8 +16,8 @@ const useGetMovies = (searchData: SearchDataType | null) => {
     error: false,
   }
 
-  const [movies, setMovies] = useState < MovieSearchResultsType[] | [] > ([]);
-  const [state, setState] = useState(initialState);
+  const [movies, setMovies] = useState<MovieSearchResultsType[] | []>([]);
+  const [state, setState] = useState<typeof initialState>(initialState);
   const [page, setOffset] = useState(1);
 
   useBottomScrollListener(() => !state.isLoading ? setOffset(page + 1) : null);
@@ -44,18 +44,18 @@ const useGetMovies = (searchData: SearchDataType | null) => {
       setMovies(newMovies);
       setState(state => ({ ...state, totalResults, error: false, isLoading: false }))
     } catch (error) {
-      setState(state => ({ ...state, error, isLoading: false }))
+      setState((state: any) => ({ ...state, error, isLoading: false }))
     }
   }
 
   useEffect(() => {
     fetchMovies(true);
-  }, [page]);
+  }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     setMovies([]);
     fetchMovies(false);
-  }, [searchData])
+  }, [searchData]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return { ...state, movies };
 }
